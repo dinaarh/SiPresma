@@ -4,16 +4,17 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAdminTable extends Migration
+class CreateMAdminTable extends Migration
 {
     public function up()
     {
-        Schema::create('admin', function (Blueprint $table) {
+        Schema::create('m_admin', function (Blueprint $table) {
             $table->string('nip')->unique();
             $table->string('nama');
-            $table->string('email')->unique();
-            $table->string('password');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
+
+            $table->foreign('user_id')->references('user_id')->on('m_users');
         });
     }
 

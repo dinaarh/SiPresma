@@ -4,11 +4,11 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePeriodeTable extends Migration
+class CreateMPeriodeTable extends Migration
 {
     public function up()
     {
-        Schema::create('periode', function (Blueprint $table) {
+        Schema::create('m_periode', function (Blueprint $table) {
             $table->id('periode_id');
             $table->string('periode_nama');
             $table->integer('periode_tahun_awal');

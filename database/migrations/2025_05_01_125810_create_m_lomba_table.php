@@ -4,11 +4,11 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLombaTable extends Migration
+class CreateMLombaTable extends Migration
 {
     public function up()
     {
-        Schema::create('lomba', function (Blueprint $table) {
+        Schema::create('m_lomba', function (Blueprint $table) {
             $table->id('lomba_id');
             $table->string('lomba_nama');
             $table->string('lomba_kategori');
@@ -25,7 +25,7 @@ class CreateLombaTable extends Migration
             $table->string('lomba_bidang_keahlian');
             $table->timestamps();
 
-            $table->foreign('periode_id')->references('periode_id')->on('periode');
+            $table->foreign('periode_id')->references('periode_id')->on('m_periode');
         });
     }
 
