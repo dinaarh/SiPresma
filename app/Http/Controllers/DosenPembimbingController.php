@@ -12,6 +12,7 @@ class DosenPembimbingController extends Controller
     public function index()
     {
         //
+        return view('dosenpembimbing.index');
     }
 
     /**
