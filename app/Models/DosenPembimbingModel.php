@@ -15,10 +15,16 @@ class DosenPembimbingModel extends Model
     protected $keyType = 'string';
 
     protected $fillable = [
+        'user_id',
         'nip',
         'nama',
         'bidang_keahlian',
         'kompetensi',
         'minat'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(UserModel::class, 'user_id', 'user_id');
+    }
 }

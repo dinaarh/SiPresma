@@ -15,6 +15,7 @@ class MahasiswaModel extends Model
     protected $keyType = 'string';
 
     protected $fillable = [
+        'user_id',
         'nim',
         'nama',
         'bidang_keahlian',
@@ -25,4 +26,19 @@ class MahasiswaModel extends Model
         'prodi_id',
         'periode_id'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(UserModel::class, 'user_id', 'user_id');
+    }
+
+    public function programStudi()
+    {
+        return $this->belongsTo(ProgramStudiModel::class, 'prodi_id', 'prodi_id');
+    }
+
+    public function periode()
+    {
+        return $this->belongsTo(PeriodeModel::class, 'periode_id', 'periode_id');
+    }
 }

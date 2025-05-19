@@ -24,4 +24,9 @@ class PrestasiModel extends Model
         'lomba_id',
         'validated_at'
     ];
+    
+    public function lomba()
+    {
+        return $this->belongsTo(LombaModel::class, 'lomba_id', 'lomba_id');
+    }
 }

@@ -16,4 +16,9 @@ class KelompokModel extends Model
         'nama_kelompok',
         'lomba_id'
     ];
+
+    public function lomba()
+    {
+        return $this->belongsTo(LombaModel::class, 'lomba_id', 'lomba_id');
+    }
 }

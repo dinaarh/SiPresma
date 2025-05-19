@@ -27,4 +27,9 @@ class LombaModel extends Model
         'periode_id',
         'lomba_bidang_keahlian'
     ];
+
+    public function periode()
+    {
+        return $this->belongsTo(PeriodeModel::class, 'periode_id', 'periode_id');
+    }
 }
