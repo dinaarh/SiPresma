@@ -34,7 +34,7 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 
 // Routes that require authentication
-Route::middleware(['auth'])->group(function () {
+// Route::middleware(['auth'])->group(function () {
     // Admin Routes
     Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
     Route::get('/admin/manage', [AdminController::class, 'manage'])->name('admin.manage');
@@ -46,4 +46,4 @@ Route::middleware(['auth'])->group(function () {
     // Student Routes
     Route::get('/student/dashboard', [StudentController::class, 'index'])->name('student.dashboard');
     Route::get('/student/courses', [StudentController::class, 'courses'])->name('student.courses');
-});
+// });
