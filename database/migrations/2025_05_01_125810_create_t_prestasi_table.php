@@ -6,7 +6,10 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateTPrestasiTable extends Migration
 {
-    public function up()
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
     {
         Schema::create('t_prestasi', function (Blueprint $table) {
             $table->id('prestasi_id');
@@ -26,8 +29,11 @@ class CreateTPrestasiTable extends Migration
         });
     }
 
-    public function down()
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
     {
-        Schema::dropIfExists('prestasi');
+        Schema::dropIfExists('t_prestasi');
     }
 }

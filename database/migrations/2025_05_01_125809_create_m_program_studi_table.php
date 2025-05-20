@@ -17,6 +17,6 @@ class CreateMProgramStudiTable extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('program_studi');
+        Schema::dropIfExists('m_program_studi');
     }
 }

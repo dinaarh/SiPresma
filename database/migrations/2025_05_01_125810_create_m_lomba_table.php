@@ -6,14 +6,17 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateMLombaTable extends Migration
 {
-    public function up()
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
     {
         Schema::create('m_lomba', function (Blueprint $table) {
             $table->id('lomba_id');
             $table->string('lomba_nama');
             $table->string('lomba_kategori');
             $table->string('lomba_penyelenggara');
-            $table->string('lomba_lokasi');
+            $table->string('lomba_lokasi_preferensi');
             $table->string('lomba_tingkat');
             $table->text('lomba_persyaratan');
             $table->date('lomba_mulai_pendaftaran');
@@ -22,15 +25,17 @@ class CreateMLombaTable extends Migration
             $table->date('lomba_mulai_pelaksanaan');
             $table->date('lomba_selesai_pelaksanaan');
             $table->unsignedBigInteger('periode_id');
-            $table->string('lomba_bidang_keahlian');
             $table->timestamps();
 
             $table->foreign('periode_id')->references('periode_id')->on('m_periode');
         });
     }
 
-    public function down()
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
     {
-        Schema::dropIfExists('lomba');
+        Schema::dropIfExists('m_lomba');
     }
 }

@@ -6,7 +6,10 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateMPeriodeTable extends Migration
 {
-    public function up()
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
     {
         Schema::create('m_periode', function (Blueprint $table) {
             $table->id('periode_id');
@@ -17,8 +20,11 @@ class CreateMPeriodeTable extends Migration
         });
     }
 
-    public function down()
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
     {
-        Schema::dropIfExists('periode');
+        Schema::dropIfExists('m_periode');
     }
 }
