@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\TeacherController;
-use App\Http\Controllers\StudentController;
+use App\Http\Controllers\MahasiswaController;
 
 /*
 |----------------------------------------------------------------------
@@ -44,6 +44,6 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::get('/teacher/courses', [TeacherController::class, 'courses'])->name('teacher.courses');
 
     // Student Routes
-    Route::get('/student/dashboard', [StudentController::class, 'index'])->name('student.dashboard');
-    Route::get('/student/courses', [StudentController::class, 'courses'])->name('student.courses');
+    Route::get('/student/dashboard', [MahasiswaController::class, 'index'])->name('student.dashboard');
+    Route::get('/student/courses', [MahasiswaController::class, 'courses'])->name('student.courses');
 // });
