@@ -43,18 +43,23 @@ class UserModel extends Model
         return $this->hasOne(MahasiswaModel::class, 'user_id', 'user_id');
     }
 
+    public function isRole($role)
+    {
+        return $this->role === $role;
+    }
+
     public function isAdmin()
     {
-        return $this->admin()->exists();
+        return $this->role === 'admin';
     }
 
-    public function isDosenPembimbing()
+    public function isTeacher()
     {
-        return $this->dosenPembimbing()->exists();
+        return $this->role === 'teacher';
     }
-
-    public function isMahasiswa()
+    
+    public function isStudent()
     {
-        return $this->mahasiswa()->exists();
+        return $this->role === 'student';
     }
 }
