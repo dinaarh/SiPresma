@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PagesController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
@@ -19,31 +21,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Halaman login
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
 
-// Rute dashboard setelah login
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware('auth')->name('dashboard');
-
-
-// Logout route
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-
-// Routes that require authentication
-// Route::middleware(['auth'])->group(function () {
-    // Admin Routes
-    Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
-    Route::get('/admin/manage', [AdminController::class, 'manage'])->name('admin.manage');
-
-    // Teacher Routes
-    Route::get('/teacher/dashboard', [TeacherController::class, 'index'])->name('teacher.dashboard');
-    Route::get('/teacher/courses', [TeacherController::class, 'courses'])->name('teacher.courses');
-
-    // Student Routes
-    Route::get('/student/dashboard', [StudentController::class, 'index'])->name('student.dashboard');
-    Route::get('/student/courses', [StudentController::class, 'courses'])->name('student.courses');
-// });
+Route::get('/dashboard', DashboardController::class)->name(name: 'dashboard');
+Route::get('/admin/dashboard', [PagesController::class, 'dashboardAdmin'])->name('admin.dashboard');
+Route::get('/dosen/dashboard', [PagesController::class, 'dashboardDosenPembimbing'])->name('dosen.dashboard');
+Route::get('/mahasiswa/dashboard', [PagesController::class, 'dashboardMahasiswa'])->name('mahasiswa.dashboard');
