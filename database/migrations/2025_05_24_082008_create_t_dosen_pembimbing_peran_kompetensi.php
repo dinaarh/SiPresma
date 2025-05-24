@@ -11,14 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('t_kompetensi_lomba', function (Blueprint $table) {
-            $table->unsignedBigInteger('lomba_id');
+        Schema::create('t_dosen_pembimbing_peran_kompetensi', function (Blueprint $table) {
+            $table->unsignedBigInteger('peran_id');
             $table->unsignedBigInteger('kompetensi_id');
             $table->timestamps();
 
-            $table->primary(['lomba_id', 'kompetensi_id']);
-
-            $table->foreign('lomba_id')->references('lomba_id')->on('m_lomba');
+            $table->primary(['peran_id', 'kompetensi_id']);
+            $table->foreign('peran_id')->references('peran_id')->on('t_dosen_pembimbing_peran');
             $table->foreign('kompetensi_id')->references('kompetensi_id')->on('m_kompetensi');
         });
     }
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('t_kompetensi_lomba');
+        Schema::dropIfExists('t_dosen_pembimbing_peran_kompetensi');
     }
 };

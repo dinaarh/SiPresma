@@ -21,11 +21,11 @@ class CreateTPrestasiTable extends Migration
             $table->string('prestasi_sertifikat_url');
             $table->enum('prestasi_status', ['Disetujui', 'Ditolak', 'Pending']);
             $table->text('prestasi_catatan')->nullable();
-            $table->unsignedBigInteger('lomba_id');
+            $table->unsignedBigInteger('kelompok_id');
             $table->timestamp('validated_at')->nullable();
             $table->timestamps();
 
-            $table->foreign('lomba_id')->references('lomba_id')->on('m_lomba');
+            $table->foreign('kelompok_id')->references('kelompok_id')->on('m_kelompok');
         });
     }
 

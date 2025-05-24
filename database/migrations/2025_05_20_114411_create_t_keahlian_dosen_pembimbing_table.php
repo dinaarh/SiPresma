@@ -13,6 +13,7 @@ return new class extends Migration {
         Schema::create('t_keahlian_dosen', function (Blueprint $table) {
             $table->string('nip');
             $table->unsignedBigInteger('bidang_keahlian_id');
+            $table->timestamps();
 
             $table->primary(['nip', 'bidang_keahlian_id']);
 

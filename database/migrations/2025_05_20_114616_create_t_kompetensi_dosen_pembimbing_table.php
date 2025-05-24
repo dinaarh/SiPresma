@@ -13,6 +13,7 @@ return new class extends Migration {
         Schema::create('t_kompetensi_dosen', function (Blueprint $table) {
             $table->string('nip');
             $table->unsignedBigInteger('kompetensi_id');
+            $table->timestamps();
 
             $table->primary(['nip', 'kompetensi_id']);
 

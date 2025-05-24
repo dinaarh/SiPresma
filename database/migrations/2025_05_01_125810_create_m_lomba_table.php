@@ -24,6 +24,7 @@ class CreateMLombaTable extends Migration
             $table->string('lomba_link_registrasi');
             $table->date('lomba_mulai_pelaksanaan');
             $table->date('lomba_selesai_pelaksanaan');
+            $table->integer('lomba_ukuran_kelompok')->default(1);
             $table->unsignedBigInteger('periode_id');
             $table->timestamps();
 

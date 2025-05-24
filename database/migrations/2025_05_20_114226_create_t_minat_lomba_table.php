@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('t_minat_lomba', function (Blueprint $table) {
             $table->unsignedBigInteger('lomba_id');
             $table->unsignedBigInteger('minat_id');
+            $table->timestamps();
 
             $table->primary(['lomba_id', 'minat_id']);
 

@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('m_minat', function (Blueprint $table) {
             $table->id('minat_id');
             $table->string('minat_nama');
+            $table->timestamps();
         });
     }
 

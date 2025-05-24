@@ -13,7 +13,7 @@ class CreateMKelompokTable extends Migration
     {
         Schema::create('m_kelompok', function (Blueprint $table) {
             $table->id('kelompok_id');
-            $table->string('nama_kelompok');
+            $table->string('kelompok_nama');
             $table->unsignedBigInteger('lomba_id');
             $table->timestamps();
 

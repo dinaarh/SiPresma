@@ -13,6 +13,7 @@ return new class extends Migration {
         Schema::create('t_kompetensi_mahasiswa', function (Blueprint $table) {
             $table->string('nim');
             $table->unsignedBigInteger('kompetensi_id');
+            $table->timestamps();
 
             $table->primary(['nim', 'kompetensi_id']);
 

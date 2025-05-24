@@ -13,6 +13,7 @@ return new class extends Migration {
         Schema::create('t_keahlian_lomba', function (Blueprint $table) {
             $table->unsignedBigInteger('lomba_id');
             $table->unsignedBigInteger('bidang_keahlian_id');
+            $table->timestamps();
 
             $table->primary(['lomba_id', 'bidang_keahlian_id']);
 
