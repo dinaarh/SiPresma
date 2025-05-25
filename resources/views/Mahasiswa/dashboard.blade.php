@@ -1,13 +1,31 @@
 @extends('layouts.app')
 
-@section('title', 'Dashboard Mahasiswa')
-
-@section('username', 'Mahasiswa User')
-@section('user_id', '345678 / Mahasiswa')
-
 @section('content')
-    <div class="bg-white p-6 rounded-lg shadow-md">
-        <h2 class="text-xl font-semibold mb-4">Mahasiswa Dashboard</h2>
-        <p>Ini adalah dashboard untuk Mahasiswa. Di sini Anda bisa melihat jadwal kuliah, riwayat pembayaran UKT, dan materi pelajaran.</p>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mahasiswa</title>
+</head>
+<body>
+    <div class="flex">
+    <!-- Sidebar -->
+    <div class="w-64 h-screen fixed top-0 left-0 z-40">
+        @include('layouts.sidebar')
     </div>
+
+    <div class="flex-1 p-6 space-y-4 ml-64"> <!-- Tambahkan margin-left untuk menghindari sidebar menutupi konten -->
+        <!-- Header -->
+        @include('layouts.header') 
+
+        <x-offline-course/>
+
+        <!-- input form mahasiswa -->
+        <x-inputDataMahasiswa />
+    </div>
+</div>
 @endsection
+</body>
+</html>

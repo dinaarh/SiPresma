@@ -4,22 +4,21 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTMahasiswaPeranTable extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
     public function up(): void
     {
-        Schema::create('t_mahasiswa_peran', function (Blueprint $table) {
-            $table->id('peran_id');
+        Schema::create('t_keahlian_mahasiswa', function (Blueprint $table) {
             $table->string('nim');
-            $table->unsignedBigInteger('kelompok_id');
-            $table->string('nama_peran');
+            $table->unsignedBigInteger('bidang_keahlian_id');
             $table->timestamps();
 
+            $table->primary(['nim', 'bidang_keahlian_id']);
+
             $table->foreign('nim')->references('nim')->on('m_mahasiswa');
-            $table->foreign('kelompok_id')->references('kelompok_id')->on('m_kelompok');
+            $table->foreign('bidang_keahlian_id')->references('bidang_keahlian_id')->on('m_bidang_keahlian');
         });
     }
 
@@ -28,6 +27,6 @@ class CreateTMahasiswaPeranTable extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('t_mahasiswa_peran');
+        Schema::dropIfExists('t_keahlian_mahasiswa');
     }
 };

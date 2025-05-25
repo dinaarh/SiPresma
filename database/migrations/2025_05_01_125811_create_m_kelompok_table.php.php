@@ -6,11 +6,14 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateMKelompokTable extends Migration
 {
+    /**
+     * Run the migrations.
+     */
     public function up(): void
     {
         Schema::create('m_kelompok', function (Blueprint $table) {
             $table->id('kelompok_id');
-            $table->string('nama_kelompok');
+            $table->string('kelompok_nama');
             $table->unsignedBigInteger('lomba_id');
             $table->timestamps();
 
@@ -18,8 +21,12 @@ class CreateMKelompokTable extends Migration
         });
     }
 
+    /**
+     * Reverse the migrations.
+     */
     public function down(): void
     {
-        Schema::dropIfExists('kelompok');
+        Schema::dropIfExists('m_kelompok');
     }
-};
+}
+;

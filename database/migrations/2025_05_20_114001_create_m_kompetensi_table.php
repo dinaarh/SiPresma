@@ -4,18 +4,16 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMPeriodeTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
      */
     public function up(): void
     {
-        Schema::create('m_periode', function (Blueprint $table) {
-            $table->id('periode_id');
-            $table->string('periode_nama');
-            $table->integer('periode_tahun_awal');
-            $table->integer('periode_tahun_akhir');
+        Schema::create('m_kompetensi', function (Blueprint $table) {
+            $table->id('kompetensi_id');
+            $table->string('kompetensi_nama');
             $table->timestamps();
         });
     }
@@ -25,6 +23,6 @@ class CreateMPeriodeTable extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('m_periode');
+        Schema::dropIfExists('m_kompetensi');
     }
-}
+};

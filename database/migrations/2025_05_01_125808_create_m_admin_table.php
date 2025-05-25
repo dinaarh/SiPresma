@@ -6,10 +6,10 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateMAdminTable extends Migration
 {
-    public function up()
+    public function up(): void
     {
         Schema::create('m_admin', function (Blueprint $table) {
-            $table->string('nip')->unique();
+            $table->string('nip')->primary();
             $table->string('nama');
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
@@ -18,8 +18,11 @@ class CreateMAdminTable extends Migration
         });
     }
 
-    public function down()
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
     {
-        Schema::dropIfExists('admin');
+        Schema::dropIfExists('m_admin');
     }
 }
