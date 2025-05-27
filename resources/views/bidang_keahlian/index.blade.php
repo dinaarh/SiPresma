@@ -9,57 +9,56 @@
             onclick="modalAction('{{ route('admin.master.bidang-keahlian.create') }}')" />
     </section>
     <section class="bg-white flex justify-end p-4 rounded-xl mb-2">
-        <x-search-input id="datatable-search" placeholder="Cari Bidang Keahlian..." />
+        <div class="w-fit">
+            <x-search-input id="datatable-search" placeholder="Cari Bidang Keahlian..." />
+        </div>
     </section>
     <section class="overflow-x-auto bg-white px-4 pb-4 rounded-xl">
-        <table id="table">
-            <thead class="bg-transparent">
+        <table id="table" class="table-auto w-full text-left border-collapse">
+            <thead class="bg-gray-100 text-gray-700 uppercase text-sm font-medium">
                 <tr>
-                    <th>
-                        <span class="flex items-center">
+                    <th class="px-4 py-3">
+                        <span class="flex items-center gap-1">
                             No
-                            <svg class="w-4 h-4 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
-                                height="24" fill="none" viewBox="0 0 24 24">
+                            <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                viewBox="0 0 24 24">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="m8 15 4 4 4-4m0-6-4-4-4 4" />
                             </svg>
                         </span>
                     </th>
-                    <th>
-                        <span class="flex items-center">
-                            Id
-                            <svg class="w-4 h-4 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
-                                height="24" fill="none" viewBox="0 0 24 24">
+                    <th class="px-4 py-3">
+                        <span class="flex items-center gap-1">
+                            ID
+                            <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                viewBox="0 0 24 24">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="m8 15 4 4 4-4m0-6-4-4-4 4" />
                             </svg>
                         </span>
                     </th>
-                    <th>
-                        <span class="flex items-center">
+                    <th class="px-4 py-3">
+                        <span class="flex items-center gap-1">
                             Nama Bidang Keahlian
-                            <svg class="w-4 h-4 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
-                                height="24" fill="none" viewBox="0 0 24 24">
+                            <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                viewBox="0 0 24 24">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="m8 15 4 4 4-4m0-6-4-4-4 4" />
                             </svg>
                         </span>
                     </th>
-                    <th>
-                        <span class="flex items-center">
-                            Aksi
-                        </span>
-                    </th>
+                    <th class="px-4 py-3 text-right">Aksi</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody class="text-gray-800">
                 @foreach ($bidang_keahlians as $bidang_keahlian)
-                    <tr>
-                        <td class="whitespace-nowrap">{{ $loop->iteration }}</td>
-                        <td>{{ $bidang_keahlian->bidang_keahlian_id }}</td>
-                        <td>{{ $bidang_keahlian->bidang_keahlian_nama }}</td>
-                        <td>
-                            <x-buttons.action route_prefix="admin.master.bidang-keahlian" id="{{ $bidang_keahlian->bidang_keahlian_id }}" />
+                    <tr class="border-b hover:bg-gray-50">
+                        <td class="px-4 py-2 whitespace-nowrap">{{ $loop->iteration }}</td>
+                        <td class="px-4 py-2">{{ $bidang_keahlian->bidang_keahlian_id }}</td>
+                        <td class="px-4 py-2">{{ $bidang_keahlian->bidang_keahlian_nama }}</td>
+                        <td class="px-4 py-2 text-right">
+                            <x-buttons.action route_prefix="admin.master.bidang-keahlian"
+                                id="{{ $bidang_keahlian->bidang_keahlian_id }}" />
                         </td>
                     </tr>
                 @endforeach
@@ -67,7 +66,7 @@
         </table>
     </section>
 
-    <div id="modal" tabindex="-1"
+    <div id="modal" tabindex="-1" aria-modal="true" role="dialog" aria-labelledby="modal-title"
         class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
         <div class="relative w-full max-w-4xl max-h-full">
             <!-- Modal content -->

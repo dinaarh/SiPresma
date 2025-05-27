@@ -14,7 +14,8 @@
     <div class="h-full px-3 py-4 overflow-y-auto bg-gray-100 rounded-xl">
         <a route="https://flowbite.com/" class="bg-white flex items-center justify-center rounded-xl px-3 py-4 mb-8">
             <img src="https://flowbite.com/docs/images/logo.svg" class="h-6 me-3 sm:h-7" alt="Flowbite Logo" />
-            <span class="self-center text-xl font-semibold whitespace-nowrap ">Flowbite</span>
+            <span class="self-center text-xl font-semibold whitespace-nowrap ">{{ config('app.name') }}
+            </span>
         </a>
         <ul class="space-y-2 font-medium bg-white rounded-xl p-2 mb-2">
             <h6 class="text-xs text-gray-400 ms-5 mt-2 mb-4">MENU</h6>

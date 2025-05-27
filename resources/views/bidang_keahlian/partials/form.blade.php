@@ -6,7 +6,7 @@
     @endif
 
     <div class="grid gap-4 mb-4 grid-cols-2">
-        <x-forms.default-input id="product-name" label="Product Name" placeholder="Enter product name"
+        <x-forms.default-input id="bidang_keahlian_nama" label="Nama" placeholder="Masukkan Nama Bidang Keahlian"
             value="{{ $bidang_keahlian->bidang_keahlian_nama ?? '' }}" isRequired />
     </div>
     <button type="submit"
