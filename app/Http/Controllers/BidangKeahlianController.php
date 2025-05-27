@@ -13,7 +13,7 @@ class BidangKeahlianController extends Controller
     public function index()
     {
         return view('bidang_keahlian.index', [
-            'bidang_keahlian' => BidangKeahlianModel::all(),
+            'bidang_keahlians' => BidangKeahlianModel::all(),
         ]);
     }
 
