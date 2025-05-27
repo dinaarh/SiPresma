@@ -12,9 +12,9 @@ class BidangKeahlianController extends Controller
      */
     public function index()
     {
-        $bidang_keahlians = BidangKeahlianModel::all();
-
-        return view('bidang_keahlian.index', compact('bidang_keahlians'));
+        return view('bidang_keahlian.index', [
+            'bidang_keahlian' => BidangKeahlianModel::all(),
+        ]);
     }
 
     /**
@@ -46,9 +46,9 @@ class BidangKeahlianController extends Controller
      */
     public function edit(string $id)
     {
-        $bidang_keahlian = BidangKeahlianModel::findOrFail($id);
-
-        return view('bidang_keahlian.modals.edit', compact('bidang_keahlian'));
+        return view('bidang_keahlian.modals.edit', [
+            'bidang_keahlian' => BidangKeahlianModel::findOrFail($id),
+        ]);
     }
 
     /**
@@ -57,6 +57,13 @@ class BidangKeahlianController extends Controller
     public function update(Request $request, string $id)
     {
         //
+    }
+
+    public function delete(string $id)
+    {
+        return view('bidang_keahlian.modals.delete', [
+            'bidang_keahlian' => BidangKeahlianModel::findOrFail($id),
+        ]);
     }
 
     /**
