@@ -11,7 +11,7 @@
 <aside id="logo-sidebar"
     class="fixed top-0 left-0 z-40 w-68 h-screen transition-transform -translate-x-full sm:translate-x-0 p-3"
     aria-label="Sidebar">
-    <div class="h-full px-3 py-4 overflow-y-auto bg-gray-100 rounded-xl">
+    <div class="h-full px-3 py-3 overflow-y-auto bg-gray-100 rounded-xl">
         <a route="https://flowbite.com/" class="bg-white flex items-center justify-center rounded-xl px-3 py-4 mb-8">
             <img src="https://flowbite.com/docs/images/logo.svg" class="h-6 me-3 sm:h-7" alt="Flowbite Logo" />
             <span class="self-center text-xl font-semibold whitespace-nowrap ">{{ config('app.name') }}
