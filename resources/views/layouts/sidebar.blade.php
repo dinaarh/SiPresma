@@ -25,32 +25,32 @@
 
         <ul class="space-y-2 font-medium bg-white rounded-xl px-2 py-3 mb-3">
             <h6 class="text-xs text-gray-400 ms-5 mt-2 mb-4">MANAJEMEN PENGGUNA</h6>
-            <x-sidebar.menu-item route="" icon='fa-solid fa-house' title="Kelola Mahasiswa" />
-            <x-sidebar.menu-item route="" icon='fa-solid fa-house' title="Kelola Dosen" />
-            <x-sidebar.menu-item route="" icon='fa-solid fa-house' title="Kelola Admin" />
+            <x-sidebar.menu-item route="" icon='fa-solid fa-user-graduate' title="Kelola Mahasiswa" />
+            <x-sidebar.menu-item route="" icon='fa-solid fa-chalkboard-teacher' title="Kelola Dosen" />
+            <x-sidebar.menu-item route="" icon='fa-solid fa-user-shield' title="Kelola Admin" />
         </ul>
 
         <ul class="space-y-2 font-medium bg-white rounded-xl p-2 mb-3">
             <h6 class="text-xs text-gray-400 ms-5 mt-2 mb-4">MANAJEMEN LOMBA</h6>
-            <x-sidebar.menu-item route="" icon='fa-solid fa-house' title="Kelola Kelompok" />
-            <x-sidebar.menu-item route="" icon='fa-solid fa-house' title="Kelola Lomba" />
-            <x-sidebar.menu-item route="" icon='fa-solid fa-house' title="Kelola Prestasi" />
+            <x-sidebar.menu-item route="" icon='fa-solid fa-users' title="Kelola Kelompok" />
+            <x-sidebar.menu-item route="" icon='fa-solid fa-trophy' title="Kelola Lomba" />
+            <x-sidebar.menu-item route="" icon='fa-solid fa-medal' title="Kelola Prestasi" />
         </ul>
 
         <ul class="space-y-2 font-medium bg-white rounded-xl p-2 mb-3">
             <h6 class="text-xs text-gray-400 ms-5 mt-2 mb-4">MASTER DATA</h6>
-            <x-sidebar.menu-item route="" icon='fa-solid fa-house' title="Kelola Periode" />
-            <x-sidebar.menu-item route="" icon='fa-solid fa-house' title="Kelola Program Studi" />
-            <x-sidebar.menu-item route="" icon='fa-solid fa-house' title="Kelola Kompetensi" />
-            <x-sidebar.menu-item route="admin.master.bidang-keahlian.index" icon='fa-solid fa-house'
+            <x-sidebar.menu-item route="" icon='fa-solid fa-calendar-days' title="Kelola Periode" />
+            <x-sidebar.menu-item route="" icon='fa-solid fa-building-columns' title="Kelola Program Studi" />
+            <x-sidebar.menu-item route="" icon='fa-solid fa-layer-group' title="Kelola Kompetensi" />
+            <x-sidebar.menu-item route="admin.master.bidang-keahlian.index" icon='fa-solid fa-briefcase'
                 title="Kelola Keahlian" />
-            <x-sidebar.menu-item route="" icon='fa-solid fa-house' title="Kelola Minat" />
+            <x-sidebar.menu-item route="" icon='fa-solid fa-heart' title="Kelola Minat" />
         </ul>
 
         <ul class="space-y-2 font-medium bg-white rounded-xl p-2 mb-3">
             <h6 class="text-xs text-gray-400 ms-5 mt-2 mb-4">PENGATURAN</h6>
-            <x-sidebar.menu-item route="" icon='fa-solid fa-house' title="Profil" />
-            <x-sidebar.menu-item route="" icon='fa-solid fa-house' title="Log out" />
+            <x-sidebar.menu-item route="" icon='fa-solid fa-user-cog' title="Profil" />
+            <x-sidebar.menu-item route="" icon='fa-solid fa-right-from-bracket' title="Log out" />
         </ul>
     </div>
 </aside>
