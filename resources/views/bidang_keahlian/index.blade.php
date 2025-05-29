@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="bg-white flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 p-4 rounded-xl mb-2">
+    <section class="bg-white flex flex-col md:flex-row md:justify-between md:items-center gap-4 p-4 rounded-xl mb-2">
         <div class="flex flex-col gap-1">
             <h1 class="text-xl font-bold">{{ $title }}</h1>
             <x-breadcrumbs :items="$breadcrumbs" />
         </div>
-        <div class="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
+        <div class="flex flex-col md:flex-row gap-2 w-full md:w-auto">
             <div class="flex flex-row gap-2 flex-wrap">
                 <x-buttons.default type="button" title="Export PDF" color="primary" onclick="" />
                 <x-buttons.default type="button" title="Export Excel" color="primary" onclick="" />
