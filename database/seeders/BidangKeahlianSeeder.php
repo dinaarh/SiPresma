@@ -5,43 +5,33 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class AdminSeeder extends Seeder
+class BidangKeahlianSeeder extends Seeder
 {
     public function run()
     {
-        DB::table('m_admin')->insert([
+        DB::table('m_bidang_keahlian')->insert([
             [
-                'nip' => '199001012015011001',
-                'nama' => 'Fajar Suryanto',
-                'user_id' => 11,
+                'bidang_keahlian_nama' => 'Machine Learning',
                 'created_at' => now(),
                 'updated_at' => now()
             ],
             [
-                'nip' => '199002022015022002',
-                'nama' => 'Gita Maharani',
-                'user_id' => 12,
+                'bidang_keahlian_nama' => 'Frontend Development',
                 'created_at' => now(),
                 'updated_at' => now()
             ],
             [
-                'nip' => '199003032015033003',
-                'nama' => 'Hendra Kusuma',
-                'user_id' => 13,
+                'bidang_keahlian_nama' => 'Backend Development',
                 'created_at' => now(),
                 'updated_at' => now()
             ],
             [
-                'nip' => '199004042015044004',
-                'nama' => 'Indira Sari',
-                'user_id' => 14,
+                'bidang_keahlian_nama' => 'Database Management',
                 'created_at' => now(),
                 'updated_at' => now()
             ],
             [
-                'nip' => '199005052015055005',
-                'nama' => 'Joko Widodo',
-                'user_id' => 15,
+                'bidang_keahlian_nama' => 'Network Security',
                 'created_at' => now(),
                 'updated_at' => now()
             ]
