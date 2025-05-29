@@ -7,6 +7,19 @@ html {
     font-family: "Inter", arial;
 }
 
+.is-invalid {
+    @apply border-red-500 !important;
+}
+
+.is-invalid:focus {
+    @apply border-red-500 !important;
+    @apply ring-red-200 !important;
+}
+
+.error-text {
+    @apply text-red-500 text-xs mt-1;
+}
+
 @theme {
     --color-primary: #3b82f6;
     --color-primary-focus: #2563eb;
