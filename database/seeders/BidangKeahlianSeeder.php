@@ -2,23 +2,39 @@
 
 namespace Database\Seeders;
 
-use DB;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class BidangKeahlianSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
-    public function run(): void
+    public function run()
     {
-        for ($i = 1; $i <= 20; $i++) {
-            $data[] = [
-                'bidang_keahlian_nama' => 'Bidang Keahlian ' . $i,
-            ];
-        }
-
-        DB::table('m_bidang_keahlian')->insert($data);
+        DB::table('m_bidang_keahlian')->insert([
+            [
+                'bidang_keahlian_nama' => 'Machine Learning',
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'bidang_keahlian_nama' => 'Frontend Development',
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'bidang_keahlian_nama' => 'Backend Development',
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'bidang_keahlian_nama' => 'Database Management',
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'bidang_keahlian_nama' => 'Network Security',
+                'created_at' => now(),
+                'updated_at' => now()
+            ]
+        ]);
     }
 }
