@@ -8,12 +8,12 @@ html {
 }
 
 .is-invalid {
-    @apply border-red-500 !important;
+    @apply border-red-500;
 }
 
 .is-invalid:focus {
-    @apply border-red-500 !important;
-    @apply ring-red-200 !important;
+    @apply border-red-500;
+    @apply ring-red-200;
 }
 
 .error-text {
