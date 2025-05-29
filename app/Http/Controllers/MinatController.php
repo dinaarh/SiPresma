@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\MinatStoreRequest;
+use App\Http\Requests\MinatUpdateRequest;
 use Illuminate\Http\Request;
 
 class MinatController extends Controller
@@ -25,7 +27,7 @@ class MinatController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(MinatStoreRequest $request)
     {
         //
     }
@@ -49,7 +51,7 @@ class MinatController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(MinatUpdateRequest $request, string $id)
     {
         //
     }

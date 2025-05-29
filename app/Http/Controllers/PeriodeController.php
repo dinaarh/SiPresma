@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PeriodeStoreRequest;
+use App\Http\Requests\PeriodeUpdateRequest;
 use Illuminate\Http\Request;
 
 class PeriodeController extends Controller
@@ -25,7 +27,7 @@ class PeriodeController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(PeriodeStoreRequest $request)
     {
         //
     }
@@ -49,7 +51,7 @@ class PeriodeController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(PeriodeUpdateRequest $request, string $id)
     {
         //
     }

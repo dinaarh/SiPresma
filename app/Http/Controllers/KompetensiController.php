@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\KompetensiStoreRequest;
+use App\Http\Requests\KompetensiUpdateRequest;
 use Illuminate\Http\Request;
 
 class KompetensiController extends Controller
@@ -25,7 +27,7 @@ class KompetensiController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(KompetensiStoreRequest $request)
     {
         //
     }
@@ -49,7 +51,7 @@ class KompetensiController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(KompetensiUpdateRequest $request, string $id)
     {
         //
     }
