@@ -1,20 +1,30 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="bg-white flex justify-end gap-2 p-4 rounded-xl mb-2">
-        <x-buttons.default type="button" title="Export PDF" color="primary" onclick="" />
-        <x-buttons.default type="button" title="Export Excel" color="primary" onclick="" />
-        <x-buttons.default type="button" title="Import Excel" color="primary" onclick="" />
-        <x-buttons.default type="button" title="Tambah Baru" color="primary"
-            onclick="modalAction('{{ route('admin.master.bidang-keahlian.create') }}')" />
-    </section>
-    <section class="bg-white flex justify-end p-4 rounded-xl mb-2">
-        <div class="w-fit">
-            <x-search-input id="datatable-search" placeholder="Cari Bidang Keahlian..." />
+    <section class="bg-white flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 p-4 rounded-xl mb-2">
+        <div class="flex flex-col gap-1">
+            <h1 class="text-xl font-bold">{{ $title }}</h1>
+            <x-breadcrumbs :items="$breadcrumbs" />
+        </div>
+        <div class="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
+            <div class="flex flex-row gap-2 flex-wrap">
+                <x-buttons.default type="button" title="Export PDF" color="primary" onclick="" />
+                <x-buttons.default type="button" title="Export Excel" color="primary" onclick="" />
+            </div>
+            <div class="flex flex-row gap-2 flex-wrap">
+                <x-buttons.default type="button" title="Import Excel" color="primary" onclick="" />
+                <x-buttons.default type="button" title="Tambah Baru" color="primary"
+                    onclick="modalAction('{{ route('admin.master.bidang-keahlian.create') }}')" />
+            </div>
         </div>
     </section>
-    <section class="overflow-x-auto bg-white px-4 pb-4 rounded-xl">
-        <table id="table" class="table-auto w-full text-left border-collapse">
+    <section class="overflow-x-auto bg-white px-4 py-4 rounded-xl">
+        <div class="flex justify-end mb-2">
+            <div class="w-fit">
+                <x-search-input id="datatable-search" placeholder="Cari Bidang Keahlian..." />
+            </div>
+        </div>
+        <table id="table" class="table-auto w-full text-left border-collapse border border-gray-200">
             <thead class="bg-gray-100 text-gray-700 uppercase text-sm font-medium">
                 <tr>
                     <th class="px-4 py-3">
@@ -47,16 +57,16 @@
                             </svg>
                         </span>
                     </th>
-                    <th class="px-4 py-3 text-right">Aksi</th>
+                    <th class="px-4 py-3">Aksi</th>
                 </tr>
             </thead>
             <tbody class="text-gray-800">
                 @foreach ($bidang_keahlians as $bidang_keahlian)
                     <tr class="border-b hover:bg-gray-50">
-                        <td class="px-4 py-2 whitespace-nowrap">{{ $loop->iteration }}</td>
-                        <td class="px-4 py-2">{{ $bidang_keahlian->bidang_keahlian_id }}</td>
-                        <td class="px-4 py-2">{{ $bidang_keahlian->bidang_keahlian_nama }}</td>
-                        <td class="px-4 py-2 text-right">
+                        <td class="px-4 py-1 whitespace-nowrap">{{ $loop->iteration }}</td>
+                        <td class="px-4 py-1">{{ $bidang_keahlian->bidang_keahlian_id }}</td>
+                        <td class="px-4 py-1">{{ $bidang_keahlian->bidang_keahlian_nama }}</td>
+                        <td class="px-4 py-1 text-right">
                             <x-buttons.action route_prefix="admin.master.bidang-keahlian"
                                 id="{{ $bidang_keahlian->bidang_keahlian_id }}" />
                         </td>
@@ -66,11 +76,12 @@
         </table>
     </section>
 
-    <div id="modal" tabindex="-1" aria-modal="true" role="dialog" aria-labelledby="modal-title"
-        class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
-        <div class="relative w-full max-w-4xl max-h-full">
+    <div id="modal" tabindex="-1" aria-hidden="true"
+        class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+        <div class="relative p-4 w-full max-w-md max-h-full">
             <!-- Modal content -->
-            <div id="modal-content" class="relative bg-white rounded-lg shadow-sm ">
+            <div id="modal-content" class="relative bg-white rounded-xl shadow-sm">
+                {{-- Loaded content here --}}
             </div>
         </div>
     </div>
@@ -91,7 +102,7 @@
             if (document.getElementById("table") && typeof simpleDatatables.DataTable !== 'undefined') {
                 console.log("Initializing DataTable...");
                 try {
-                    const dataTable = new simpleDatatables.DataTable("#table", {
+                    window.dataTable = new simpleDatatables.DataTable("#table", {
                         searchable: false,
                         perPage: 10,
                         perPageSelect: false,
@@ -138,15 +149,22 @@
                 console.error("Table or DataTable library not found!");
             }
 
-            // Modal for adding/editing users
+            const modal = document.getElementById('modal');
+            let modalInstance = null;
+
             window.modalAction = function(url) {
+                if (modalInstance) {
+                    disposeModal();
+                }
+
                 $.ajax({
                     url: url,
                     type: 'GET',
                     success: function(response) {
-                        console.log(url);
+                        modalInstance = new Modal(modal);
+
                         $('#modal-content').html(response);
-                        $('#modal').addClass('show');
+                        modalInstance.show();
                     },
                     error: function(xhr) {
                         console.error('Error loading modal content:', xhr);
@@ -159,17 +177,23 @@
                 });
             };
 
-            $(document).off('click', '#modal-close').on('click', '#modal-close', function() {
-                $('#modal').removeClass('show');
-                $('#modal-content').html('');
-            });
+            $(document).off('click', '[data-modal-hide="modal"]').on('click', '[data-modal-hide="modal"]',
+                function() {
+                    disposeModal();
+                });
 
-            $(document).off('click', '#modal').on('click', '#modal', function(e) {
-                if (e.target.id === 'modal') {
-                    $('#modal').removeClass('show');
-                    $('#modal-content').html('');
+            window.disposeModal = function() {
+                if (modalInstance) {
+                    if (typeof modalInstance.hide === 'function') {
+                        modalInstance.hide();
+                    }
+                    if (typeof modalInstance.dispose === 'function') {
+                        modalInstance.dispose();
+                    }
+                    $('#modal-content').empty();
+                    modalInstance = null;
                 }
-            });
+            }
         });
     </script>
 @endpush

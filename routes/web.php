@@ -44,6 +44,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::get('/{id}', [BidangKeahlianController::class, 'show'])->name('show');
             Route::get('/{id}/edit', [BidangKeahlianController::class, 'edit'])->name('edit');
             Route::put('/{id}', [BidangKeahlianController::class, 'update'])->name('update');
+            Route::get('/{id}/delete', [BidangKeahlianController::class, 'delete'])->name('delete');
             Route::delete('/{id}', [BidangKeahlianController::class, 'destroy'])->name('destroy');
         });
     });
