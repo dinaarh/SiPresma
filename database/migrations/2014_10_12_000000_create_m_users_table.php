@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('m_users', function (Blueprint $table) {
             $table->id('user_id');
             $table->string('email')->unique();
-            $table->string('password');
+            $table->string('password')->min(8);
             $table->string('foto_profil_url');
             $table->enum('role', ['mahasiswa', 'dosen_pembimbing', 'admin']);
             $table->enum('status_akun', ['aktif', 'non-aktif']);
