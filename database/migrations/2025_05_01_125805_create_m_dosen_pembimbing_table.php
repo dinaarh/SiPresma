@@ -6,14 +6,14 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateMDosenPembimbingTable extends Migration
 {
-    public function up()
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
     {
         Schema::create('m_dosen_pembimbing', function (Blueprint $table) {
-            $table->string('nip')->unique();
+            $table->string('nip', 18)->primary();
             $table->string('nama');
-            $table->string('bidang_keahlian');
-            $table->string('kompetensi');
-            $table->string('minat');
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
 
@@ -21,8 +21,11 @@ class CreateMDosenPembimbingTable extends Migration
         });
     }
 
-    public function down()
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
     {
-        Schema::dropIfExists('dosen_pembimbing');
+        Schema::dropIfExists('m_dosen_pembimbing');
     }
 }

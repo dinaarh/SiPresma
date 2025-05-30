@@ -6,6 +6,9 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateTDosenPembimbingPeranTable extends Migration
 {
+    /**
+     * Run the migrations.
+     */
     public function up(): void
     {
         Schema::create('t_dosen_pembimbing_peran', function (Blueprint $table) {
@@ -20,8 +23,12 @@ class CreateTDosenPembimbingPeranTable extends Migration
         });
     }
 
+    /**
+     * Reverse the migrations.
+     */
     public function down(): void
     {
-        Schema::dropIfExists('dosen_pembimbing_peran');
+        Schema::dropIfExists('t_dosen_pembimbing_peran');
     }
-};
+}
+;
