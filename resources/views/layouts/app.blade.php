@@ -25,7 +25,7 @@
 
 <body class="bg-white text-gray-900 antialiased">
 
-    @if (Route::is('login') || Route::is('register'))
+    @if (Route::is('login') || Route::is('register') || Route::is('home'))
         <main class="min-h-screen">
             @yield('content')
         </main>
