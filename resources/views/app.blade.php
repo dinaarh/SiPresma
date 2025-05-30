@@ -1,15 +1,6 @@
 @extends('layouts.app')
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Second</title>
-</head>
-
-<body>
+@section('content')
     <section class="max-w-7xl justify-center items-center mx-auto">
         <nav class="flex justify-between px-12 mt-6 items-center p-6 bg-white">
             <a href="#" class="text-xl font-bold text-black italic">SiPresma</a>
@@ -19,7 +10,8 @@
                 <a href="#" class="text-gray-700 hover:text-black">Use Cases</a>
                 <a href="#" class="text-gray-700 hover:text-black">Team</a>
                 <a href="#" class="text-gray-700 hover:text-black">Blog</a>
-                <a href="#" class=" text-black border-1 border-gray-600 px-8 py-4 rounded-2xl hover:bg-gray-700">Request
+                <a href="#"
+                    class=" text-black border-1 border-gray-600 px-8 py-4 rounded-2xl hover:bg-gray-700">Request
                     a
                     quote</a>
             </div>
@@ -121,8 +113,7 @@
                 <div class="bg-white p-8 rounded-3xl border-b-8 border-black shadow-xl border-1 hover:shadow-2xl">
                     <div class="flex items-center justify-between">
                         <h3 class="text-2xl font-semibold text-green-600">Innovasi </h3>
-                        <img src="{{ asset('images/email-marketing-icon.svg') }}" alt="Email Marketing"
-                            class="w-12 h-12">
+                        <img src="{{ asset('images/email-marketing-icon.svg') }}" alt="Email Marketing" class="w-12 h-12">
                     </div>
                     <p class="text-gray-600 mt-4">
                         Reach your customers directly with engaging email campaigns that drive conversions.
@@ -373,46 +364,44 @@
             </div>
         </section>
 
-</body>
+        <script>
+            let openStep = null;
 
-<script>
-    let openStep = null;
+            function toggleContent(stepNumber) {
+                const content = document.getElementById(`step${stepNumber}-content`);
+                const icon = content.previousElementSibling.querySelector('span');
+                const step = document.getElementById(`step${stepNumber}`);
 
-    function toggleContent(stepNumber) {
-        const content = document.getElementById(`step${stepNumber}-content`);
-        const icon = content.previousElementSibling.querySelector('span');
-        const step = document.getElementById(`step${stepNumber}`);
+                // Jika langkah sebelumnya terbuka, tutupkan
+                if (openStep && openStep !== stepNumber) {
+                    const previousContent = document.getElementById(`step${openStep}-content`);
+                    const previousStep = document.getElementById(`step${openStep}`);
+                    const previousIcon = previousContent.previousElementSibling.querySelector('span');
 
-        // Jika langkah sebelumnya terbuka, tutupkan
-        if (openStep && openStep !== stepNumber) {
-            const previousContent = document.getElementById(`step${openStep}-content`);
-            const previousStep = document.getElementById(`step${openStep}`);
-            const previousIcon = previousContent.previousElementSibling.querySelector('span');
+                    // Menutup langkah yang sedang terbuka
+                    previousContent.classList.add('hidden');
+                    previousIcon.textContent = '+';
+                    previousStep.classList.add('bg-gray-200');
+                    previousStep.classList.remove('bg-lime-300');
+                    previousStep.classList.remove('border-b-8', 'border-black');
+                }
 
-            // Menutup langkah yang sedang terbuka
-            previousContent.classList.add('hidden');
-            previousIcon.textContent = '+';
-            previousStep.classList.add('bg-gray-200');
-            previousStep.classList.remove('bg-lime-300');
-            previousStep.classList.remove('border-b-8', 'border-black');
-        }
-
-        if (content.classList.contains('hidden')) {
-            content.classList.remove('hidden');
-            icon.textContent = '-';
-            step.classList.add('bg-lime-300');
-            step.classList.remove('bg-gray-200');
-            step.classList.add('border-b-8', 'border-black');
-            openStep = stepNumber;
-        } else {
-            content.classList.add('hidden');
-            icon.textContent = '+';
-            step.classList.add('bg-gray-200');
-            step.classList.remove('bg-lime-300');
-            step.classList.remove('border-b-8', 'border-black');
-            openStep = null;
-        }
-    }
-</script>
-
-</html>
+                if (content.classList.contains('hidden')) {
+                    content.classList.remove('hidden');
+                    icon.textContent = '-';
+                    step.classList.add('bg-lime-300');
+                    step.classList.remove('bg-gray-200');
+                    step.classList.add('border-b-8', 'border-black');
+                    openStep = stepNumber;
+                } else {
+                    content.classList.add('hidden');
+                    icon.textContent = '+';
+                    step.classList.add('bg-gray-200');
+                    step.classList.remove('bg-lime-300');
+                    step.classList.remove('border-b-8', 'border-black');
+                    openStep = null;
+                }
+            }
+        </script>
+    </section>
+@endsection
