@@ -25,21 +25,27 @@
 
 <body class="bg-white text-gray-900 antialiased">
 
-    @include('layouts.sidebar')
+    @if (Route::is('login') || Route::is('register'))
+        <main class="min-h-screen">
+            @yield('content')
+        </main>
+    @else
+        @include('layouts.sidebar')
 
-    <div class="sm:ml-68 min-h-screen m-3">
+        <div class="sm:ml-68 min-h-screen m-3">
 
-        @include('layouts.header')
+            @include('layouts.header')
 
-        <div class="bg-gray-100 flex flex-col rounded-xl p-3 my-3">
+            <div class="bg-gray-100 flex flex-col rounded-xl p-3 my-3">
 
-            <main role="main" class="flex-grow">
-                @yield('content')
-            </main>
+                <main role="main" class="flex-grow">
+                    @yield('content')
+                </main>
+            </div>
+
+            @include('layouts.footer')
         </div>
-
-        @include('layouts.footer')
-    </div>
+    @endif
 
     {{-- Flowbite JS --}}
     <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js" defer></script>

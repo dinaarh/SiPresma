@@ -40,7 +40,31 @@
         <ul class="space-y-2 font-medium bg-white rounded-xl p-2 mb-3">
             <h6 class="text-xs text-gray-400 ms-5 mt-2 mb-4">PENGATURAN</h6>
             <x-sidebar.menu-item route="profile.index" icon='fa-solid fa-user-cog' title="Profil" />
-            <x-sidebar.menu-item route="" icon='fa-solid fa-right-from-bracket' title="Log out" />
+            <x-sidebar.menu-item onclick="logout()" icon='fa-solid fa-right-from-bracket' title="Log out" />
         </ul>
     </div>
 </aside>
+
+<script>
+    function logout(event) {
+        Swal.fire({
+            title: "KONFIRMASI",
+            text: "Apakah anda yakin untuk keluar?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#d33",
+            confirmButtonText: "Log out",
+            cancelButtonText: "Kembali"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire({
+                    title: "Logged out!",
+                    text: "Anda berhasil keluar!",
+                    icon: "success"
+                }).then(() => {
+                    window.location.href = '{{ route('logout') }}';
+                });
+            }
+        });
+    }
+</script>

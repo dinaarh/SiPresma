@@ -10,7 +10,7 @@
 
 <div class="form-group">
     <label for="{{ $id }}" class="block mb-1 text-xs font-medium text-gray-600">{{ $label }}</label>
-    <input type="text" id="{{ $id }}" name="{{ $id }}" placeholder="{{ $placeholder }}"
+    <input type="{{ $type }}" id="{{ $id }}" name="{{ $id }}" placeholder="{{ $placeholder }}"
         value="{{ old($id, $value) }}" @if ($disabled) disabled @endif
         @if ($isRequired) required @endif
         class="w-full rounded-md bg-gray-50 border border-gray-300 text-sm text-gray-900 placeholder-gray-400 px-3 py-2 transition-all focus:ring-2 focus:ring-blue-500 focus:border-blue-500 placeholder:text-xs" />

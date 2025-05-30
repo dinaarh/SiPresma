@@ -3,11 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
-class UserModel extends Model
+class UserModel extends Authenticatable
 {
-    use HasFactory;
+    use HasFactory, Notifiable;
     protected $table = 'm_users';
     protected $primaryKey = 'user_id';
 
@@ -46,20 +47,5 @@ class UserModel extends Model
     public function isRole($role)
     {
         return $this->role === $role;
-    }
-
-    public function isAdmin()
-    {
-        return $this->role === 'admin';
-    }
-
-    public function isTeacher()
-    {
-        return $this->role === 'teacher';
-    }
-    
-    public function isStudent()
-    {
-        return $this->role === 'student';
     }
 }

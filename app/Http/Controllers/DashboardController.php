@@ -10,14 +10,18 @@ class DashboardController extends Controller
     /**
      * Handle the incoming request.
      */
-    public function __invoke()
+    public function admin()
     {
-        if (auth()->user()->isAdmin()) {
-            return view('admin.dashboard');
-        } elseif (auth()->user()->isDosenPembimbing()) {
-            return view('dosen_pembimbing.dashboard');
-        } elseif (auth()->user()->isMahasiswa()) {
-            return view('mahasiswa.dashboard');
-        }
+        return view('admin.dashboard');
+    }
+
+    public function dosenPembimbing()
+    {
+        return view('dosen_pembimbing.dashboard');
+    }
+
+    public function mahasiswa()
+    {
+        return view('mahasiswa.dashboard');
     }
 }

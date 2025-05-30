@@ -5,7 +5,9 @@
 <nav class="flex" aria-label="Breadcrumb">
     <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
         <li class="inline-flex items-center">
-            <a href="{{ route('dashboard') }}"
+            <a @if (auth()->user()->role === 'admin') href="{{ route('admin.dashboard') }}"
+            @elseif (auth()->user()->role === 'dosen_pembimbing') href="{{ route('dosen-pembimbing.dashboard') }}"
+            @else href="{{ route('mahasiswa.dashboard') }}" @endif
                 class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white">
                 <svg class="w-3 h-3 me-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                     viewBox="0 0 20 20">

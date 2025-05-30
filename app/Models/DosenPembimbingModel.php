@@ -17,10 +17,7 @@ class DosenPembimbingModel extends Model
     protected $fillable = [
         'user_id',
         'nip',
-        'nama',
-        'bidang_keahlian',
-        'kompetensi',
-        'minat'
+        'nama'
     ];
 
     public function user()
