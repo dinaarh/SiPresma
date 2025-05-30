@@ -20,7 +20,7 @@ use App\Http\Controllers\MahasiswaController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('app');
 })->name('home');
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
