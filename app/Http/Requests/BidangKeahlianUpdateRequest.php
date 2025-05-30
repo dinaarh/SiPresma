@@ -5,6 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
+use Illuminate\Validation\Rule;
 
 class BidangKeahlianUpdateRequest extends FormRequest
 {
@@ -24,7 +25,21 @@ class BidangKeahlianUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'bidang_keahlian_nama' => ['required', 'string', 'max:255', 'unique:m_bidang_keahlian,bidang_keahlian_nama,' . $this->route('bidang_keahlian') . ',bidang_keahlian_id'],
+            'bidang_keahlian_nama' => [
+                'required',
+                'string',
+                'max:255',
+                Rule::unique('m_bidang_keahlian', 'bidang_keahlian_nama')
+                    ->ignore($this->route('bidang_keahlian'), 'bidang_keahlian_id')
+            ],
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'bidang_keahlian_nama.required' => 'Nama bidang keahlian wajib diisi.',
+            'bidang_keahlian_nama.unique' => 'Nama bidang keahlian sudah digunakan.',
         ];
     }
 
