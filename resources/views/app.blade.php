@@ -66,13 +66,13 @@
                 <!-- Card 1: Search Engine Optimization -->
                 <div class="bg-gray-200 p-8 rounded-3xl border-b-8 border-black shadow-xl border-1 hover:shadow-2xl">
                     <div class="flex items-center justify-between">
-                        <h3 class="text-2xl font-semibold text-black">Search Engine Optimization</h3>
+                        <h3 class="text-2xl font-semibold text-black">Lomba International</h3>
                         <img src="{{ asset('images/fixedbug.png') }}" alt="SEO" class="w-40 h-32">
                     </div>
                     <p class="text-gray-600 mt-4">
                         Improve your website’s ranking and drive more organic traffic with our SEO strategies.
                     </p>
-                    <a href="#" class="mt-6 inline-flex items-center text-green-500 hover:text-green-600">
+                    <a href="#" class="mt-6 inline-flex items-center text-black hover:text-green-600">
                         Learn more
                         <svg class="w-5 h-5 ml-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -82,15 +82,15 @@
                 </div>
 
                 <!-- Card 2: Pay-per-click Advertising -->
-                <div class="bg-white p-8 rounded-3xl border-b-8 border-black shadow-xl border-1 hover:shadow-2xl">
+                <div class="bg-lime-400 p-8 rounded-3xl border-b-8 border-black shadow-xl border-1 hover:shadow-2xl">
                     <div class="flex items-center justify-between">
-                        <h3 class="text-2xl font-semibold text-green-600">Pay-per-click Advertising</h3>
+                        <h3 class="text-2xl font-semibold text-green-600">Lomba Nasional</h3>
                         <img src="{{ asset('images/fixedbug.png') }}" alt="PPC" class="w-40 h-32">
                     </div>
                     <p class="text-gray-600 mt-4">
                         Maximize your ad spend with targeted campaigns designed to bring measurable results.
                     </p>
-                    <a href="#" class="mt-6 inline-flex items-center text-green-500 hover:text-green-600">
+                    <a href="#" class="mt-6 inline-flex items-center text-black hover:text-green-600">
                         Learn more
                         <svg class="w-5 h-5 ml-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -100,15 +100,15 @@
                 </div>
 
                 <!-- Card 3: Social Media Marketing -->
-                <div class="bg-white p-8 rounded-3xl border-b-8 border-black shadow-xl border-1 hover:shadow-2xl">
+                <div class="bg-gray-800 p-8 rounded-3xl border-b-8 border-black shadow-xl border-1 hover:shadow-2xl">
                     <div class="flex items-center justify-between">
-                        <h3 class="text-2xl font-semibold text-green-600">Social Media Marketing</h3>
+                        <h3 class="text-2xl font-semibold text-white">Project Portofolio</h3>
                         <img src="{{ asset('images/social-media-icon.svg') }}" alt="Social Media" class="w-12 h-12">
                     </div>
-                    <p class="text-gray-600 mt-4">
+                    <p class="text-gray-100 mt-4">
                         Engage with your audience and build your brand presence across social media platforms.
                     </p>
-                    <a href="#" class="mt-6 inline-flex items-center text-green-500 hover:text-green-600">
+                    <a href="#" class="mt-6 inline-flex items-center text-white hover:text-green-600">
                         Learn more
                         <svg class="w-5 h-5 ml-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -120,7 +120,7 @@
                 <!-- Card 4: Email Marketing -->
                 <div class="bg-white p-8 rounded-3xl border-b-8 border-black shadow-xl border-1 hover:shadow-2xl">
                     <div class="flex items-center justify-between">
-                        <h3 class="text-2xl font-semibold text-green-600">Email Marketing</h3>
+                        <h3 class="text-2xl font-semibold text-green-600">Innovasi </h3>
                         <img src="{{ asset('images/email-marketing-icon.svg') }}" alt="Email Marketing"
                             class="w-12 h-12">
                     </div>
@@ -137,16 +137,16 @@
                 </div>
 
                 <!-- Card 5: Content Creation -->
-                <div class="bg-white p-8 rounded-3xl border-b-8 border-black shadow-xl border-1 hover:shadow-2xl">
+                <div class="bg-lime-400 p-8 rounded-3xl border-b-8 border-black shadow-xl border-1 hover:shadow-2xl">
                     <div class="flex items-center justify-between">
-                        <h3 class="text-2xl font-semibold text-green-600">Content Creation</h3>
+                        <h3 class="text-2xl font-semibold text-black">Content Creation</h3>
                         <img src="{{ asset('images/content-creation-icon.svg') }}" alt="Content Creation"
                             class="w-12 h-12">
                     </div>
                     <p class="text-gray-600 mt-4">
                         Create high-quality, engaging content that resonates with your target audience.
                     </p>
-                    <a href="#" class="mt-6 inline-flex items-center text-green-500 hover:text-green-600">
+                    <a href="#" class="mt-6 inline-flex items-center text-black hover:text-green-600">
                         Learn more
                         <svg class="w-5 h-5 ml-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -156,15 +156,15 @@
                 </div>
 
                 <!-- Card 6: Analytics and Tracking -->
-                <div class="bg-white p-8 rounded-3xl border-b-8 border-black shadow-xl border-1 hover:shadow-2xl">
+                <div class="bg-gray-800 p-8 rounded-3xl border-b-8 border-black shadow-xl border-1 hover:shadow-2xl">
                     <div class="flex items-center justify-between">
-                        <h3 class="text-2xl font-semibold text-green-600">Analytics and Tracking</h3>
+                        <h3 class="text-2xl font-semibold text-white">Analytics and Tracking</h3>
                         <img src="{{ asset('images/analytics-icon.svg') }}" alt="Analytics" class="w-12 h-12">
                     </div>
-                    <p class="text-gray-600 mt-4">
+                    <p class="text-gray-100 mt-4">
                         Gain insights into your business performance with detailed analytics and tracking.
                     </p>
-                    <a href="#" class="mt-6 inline-flex items-center text-green-500 hover:text-green-600">
+                    <a href="#" class="mt-6 inline-flex items-center text-white hover:text-green-600">
                         Learn more
                         <svg class="w-5 h-5 ml-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
