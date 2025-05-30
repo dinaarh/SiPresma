@@ -12,7 +12,7 @@ class CreateMDosenPembimbingTable extends Migration
     public function up(): void
     {
         Schema::create('m_dosen_pembimbing', function (Blueprint $table) {
-            $table->string('nip')->primary();
+            $table->string('nip', 18)->primary();
             $table->string('nama');
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
