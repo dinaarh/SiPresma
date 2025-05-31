@@ -48,4 +48,18 @@ class UserModel extends Authenticatable
     {
         return $this->role === $role;
     }
+
+    public function getCurrentData()
+    {
+        switch ($this->role) {
+            case 'admin':
+                return $this->admin;
+            case 'dosen_pembimbing':
+                return $this->dosenPembimbing;
+            case 'mahasiswa':
+                return $this->mahasiswa;
+            default:
+                return null;
+        }
+    }
 }
