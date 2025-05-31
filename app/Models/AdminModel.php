@@ -19,4 +19,9 @@ class AdminModel extends Model
         'nip',
         'nama'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(UserModel::class, 'user_id', 'user_id');
+    }
 }

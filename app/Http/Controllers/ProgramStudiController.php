@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProgramStudiStoreRequest;
+use App\Http\Requests\ProgramStudiUpdateRequest;
 use Illuminate\Http\Request;
 
-class ProdiController extends Controller
+class ProgramStudiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -25,7 +27,7 @@ class ProdiController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ProgramStudiStoreRequest $request)
     {
         //
     }
@@ -49,7 +51,7 @@ class ProdiController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(ProgramStudiUpdateRequest $request, string $id)
     {
         //
     }

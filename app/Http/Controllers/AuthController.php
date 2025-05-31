@@ -2,42 +2,164 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LoginRequest;
+use App\Http\Requests\RegisterRequest;
+use App\Models\AdminModel;
+use App\Models\DosenPembimbingModel;
+use App\Models\MahasiswaModel;
+use App\Models\ProgramStudiModel;
+use App\Models\UserModel;
+use DB;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
-    // Menampilkan halaman login
     public function showLoginForm()
     {
         return view('auth.login');
     }
 
-    // Menangani proses login
-    public function login(Request $request)
+    public function login(LoginRequest $request)
     {
-        $request->validate([
-            'email' => 'required|email',
-            'password' => 'required',
-        ]);
+        try {
+            $credentials = $request->validated();
+            $user = $this->findUserByIdentifier($credentials['identifier']);
 
-        if (Auth::attempt($request->only('email', 'password'))) {
-            return redirect()->route('dashboard');
+            if (!$user) {
+                return response()->json([
+                    'status' => false,
+                    'message' => 'Akun tidak ditemukan!',
+                ]);
+            }
+
+            if (Auth::attempt(['user_id' => $user->user_id, 'password' => $credentials['password']])) {
+                $request->session()->regenerate();
+
+                return response()->json([
+                    'status' => true,
+                    'message' => 'Login berhasil!',
+                    'redirect' => $this->getRoute($user->role),
+                ]);
+            } else {
+                return response()->json([
+                    'status' => false,
+                    'message' => 'NIM/NIP atau password salah!',
+                ]);
+            }
+
+        } catch (Exception $e) {
+            return response()->json([
+                'status' => false,
+                'message' => 'Login gagal!, ' . $e->getMessage(),
+            ]);
+        }
+    }
+
+    private function findUserByIdentifier($identifier)
+    {
+        $mahasiswa = MahasiswaModel::where('nim', $identifier)->first();
+        if ($mahasiswa) {
+            return $mahasiswa->user;
         }
 
-        return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
+        $dosen_pembimbing = DosenPembimbingModel::where('nip', $identifier)->first();
+        if ($dosen_pembimbing) {
+            return $dosen_pembimbing->user;
+        }
+        $admin = AdminModel::where('nip', $identifier)->first();
+        if ($admin) {
+            return $admin->user;
+        }
+
+        return null;
+    }
+
+    private function getRoute($role)
+    {
+        switch ($role) {
+            case 'admin':
+                return route('admin.dashboard');
+            case 'dosen_pembimbing':
+                return route('dosen-pembimbing.dashboard');
+            case 'mahasiswa':
+                return route('mahasiswa.dashboard');
+            default:
+                return route('login');
+        }
+    }
+
+    public function showRegisterForm()
+    {
+        return view('auth.register', [
+            'program_studis' => ProgramStudiModel::all(),
+            'lokasi_preferensis' => [
+                'Kota',
+                'Provinsi',
+                'Nasional',
+                'Internasional',
+            ],
         ]);
     }
 
-    // Logout
+    public function register(RegisterRequest $request)
+    {
+        try {
+            DB::beginTransaction();
+            $validated = $request->validated();
+            $userData = [
+                'email' => $validated['email'],
+                'password' => Hash::make($validated['password']),
+                'role' => 'mahasiswa',
+                'status_akun' => 'aktif',
+                'last_login_at' => now(),
+            ];
+
+            $user = UserModel::create($userData);
+
+            $mahasiswaData = [
+                'nim' => $validated['nim'],
+                'nama' => $validated['nama'],
+                'program_studi_id' => $validated['program_studi'],
+                'lokasi_preferensi' => $validated['lokasi_preferensi'],
+                'user_id' => $user->user_id,
+            ];
+
+            $mahasiswa = MahasiswaModel::create($mahasiswaData);
+
+            if ($user && $mahasiswa) {
+                DB::commit();
+                Auth::login($user);
+                return response()->json([
+                    'status' => true,
+                    'message' => 'Registrasi berhasil!',
+                    'redirect' => route('mahasiswa.dashboard'),
+                ]);
+            } else {
+                DB::rollBack();
+                return response()->json([
+                    'status' => false,
+                    'message' => 'Registrasi gagal!',
+                ]);
+            }
+        } catch (Exception $e) {
+            DB::rollBack();
+            return response()->json([
+                'status' => false,
+                'message' => 'Registrasi gagal!, ' . $e->getMessage(),
+            ]);
+        }
+    }
+
     public function logout(Request $request)
     {
         Auth::logout();
+
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-
-        return redirect()->route('login');
+        return redirect()->route('home');
     }
 }
 

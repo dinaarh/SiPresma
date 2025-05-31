@@ -5,9 +5,8 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
-use Illuminate\Validation\Rule;
 
-class BidangKeahlianStoreRequest extends FormRequest
+class KompetensiUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,20 +24,7 @@ class BidangKeahlianStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'bidang_keahlian_nama' => [
-                'required',
-                'string',
-                'max:255',
-                Rule::unique('m_bidang_keahlian', 'bidang_keahlian_nama'),
-            ],
-        ];
-    }
-
-    public function messages(): array
-    {
-        return [
-            'bidang_keahlian_nama.required' => 'Nama bidang keahlian wajib diisi.',
-            'bidang_keahlian_nama.unique' => 'Nama bidang keahlian sudah digunakan.',
+            //
         ];
     }
 

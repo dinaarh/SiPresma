@@ -5,9 +5,8 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
-use Illuminate\Validation\Rule;
 
-class BidangKeahlianStoreRequest extends FormRequest
+class LoginRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,20 +24,19 @@ class BidangKeahlianStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'bidang_keahlian_nama' => [
-                'required',
-                'string',
-                'max:255',
-                Rule::unique('m_bidang_keahlian', 'bidang_keahlian_nama'),
-            ],
+            'identifier' => ['required', 'string', 'max:18'],
+            'password' => ['required', 'string', 'min:8', 'max:50'],
         ];
     }
 
     public function messages(): array
     {
         return [
-            'bidang_keahlian_nama.required' => 'Nama bidang keahlian wajib diisi.',
-            'bidang_keahlian_nama.unique' => 'Nama bidang keahlian sudah digunakan.',
+            'identifier.required' => 'NIM atau NIP wajib diisi.',
+            'identifier.max' => 'NIM atau NIP tidak boleh lebih dari 18 karakter.',
+            'password.required' => 'Kata sandi wajib diisi.',
+            'password.min' => 'Kata sandi minimal 8 karakter.',
+            'password.max' => 'Kata sandi tidak boleh lebih dari 255 karakter.',
         ];
     }
 

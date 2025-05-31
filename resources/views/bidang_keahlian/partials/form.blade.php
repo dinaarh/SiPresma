@@ -49,9 +49,18 @@
                                 location.reload();
                             });
                         } else {
+                            $('.error-text, .invalid-feedback').text('');
+                            $('.is-invalid').removeClass('is-invalid');
                             $.each(response.msgField, function(prefix, val) {
-                                $('#' + prefix).addClass('is-invalid');
                                 $('#error-' + prefix).text(val[0]);
+
+                                const $field = $('#' + prefix);
+                                if ($field.length) {
+                                    $field.addClass('is-invalid');
+                                } else {
+                                    $('[name="' + prefix + '"]').addClass(
+                                        'is-invalid');
+                                }
                             });
                         }
                     },

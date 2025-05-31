@@ -9,12 +9,12 @@ class CreateMAdminTable extends Migration
     public function up(): void
     {
         Schema::create('m_admin', function (Blueprint $table) {
-            $table->string('nip')->primary();
+            $table->string('nip', 18)->primary();
             $table->string('nama');
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
 
-            $table->foreign('user_id')->references('user_id')->on('m_users');
+            $table->foreign('user_id')->references('user_id')->on('m_user');
         });
     }
 

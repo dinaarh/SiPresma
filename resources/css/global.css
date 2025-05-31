@@ -1,0 +1,14 @@
+html {
+    font-family: "Inter", arial;
+}
+
+.is-invalid {
+    border-color: #dc3545 !important;
+}
+
+.invalid-feedback {
+    display: block;
+    color: #dc3545;
+    font-size: var(--text-xs);
+    margin-top: 0.25rem;
+}

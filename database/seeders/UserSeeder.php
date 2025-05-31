@@ -10,7 +10,7 @@ class UserSeeder extends Seeder
 {
     public function run()
     {
-        DB::table('m_users')->insert([
+        DB::table('m_user')->insert([
             // 5 Users untuk Mahasiswa
             [
                 'email' => 'mahasiswa1@polinema.ac.id',
@@ -67,7 +67,7 @@ class UserSeeder extends Seeder
                 'email' => 'dosen1@polinema.ac.id',
                 'password' => Hash::make('password123'),
                 'foto_profil_url' => 'https://via.placeholder.com/150?text=D1',
-                'role' => 'dosen',
+                'role' => 'dosen_pembimbing',
                 'status_akun' => 'aktif',
                 'last_login_at' => now(),
                 'created_at' => now(),
@@ -77,7 +77,7 @@ class UserSeeder extends Seeder
                 'email' => 'dosen2@polinema.ac.id',
                 'password' => Hash::make('password123'),
                 'foto_profil_url' => 'https://via.placeholder.com/150?text=D2',
-                'role' => 'dosen',
+                'role' => 'dosen_pembimbing',
                 'status_akun' => 'aktif',
                 'last_login_at' => now(),
                 'created_at' => now(),
@@ -87,7 +87,7 @@ class UserSeeder extends Seeder
                 'email' => 'dosen3@polinema.ac.id',
                 'password' => Hash::make('password123'),
                 'foto_profil_url' => 'https://via.placeholder.com/150?text=D3',
-                'role' => 'dosen',
+                'role' => 'dosen_pembimbing',
                 'status_akun' => 'aktif',
                 'last_login_at' => now(),
                 'created_at' => now(),
@@ -97,7 +97,7 @@ class UserSeeder extends Seeder
                 'email' => 'dosen4@polinema.ac.id',
                 'password' => Hash::make('password123'),
                 'foto_profil_url' => 'https://via.placeholder.com/150?text=D4',
-                'role' => 'dosen',
+                'role' => 'dosen_pembimbing',
                 'status_akun' => 'aktif',
                 'last_login_at' => now(),
                 'created_at' => now(),
@@ -107,7 +107,7 @@ class UserSeeder extends Seeder
                 'email' => 'dosen5@polinema.ac.id',
                 'password' => Hash::make('password123'),
                 'foto_profil_url' => 'https://via.placeholder.com/150?text=D5',
-                'role' => 'dosen',
+                'role' => 'dosen_pembimbing',
                 'status_akun' => 'aktif',
                 'last_login_at' => now(),
                 'created_at' => now(),

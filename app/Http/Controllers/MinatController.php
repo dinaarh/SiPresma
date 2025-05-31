@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\PeriodeStoreRequest;
-use App\Http\Requests\PeriodeUpdateRequest;
+use App\Http\Requests\MinatStoreRequest;
+use App\Http\Requests\MinatUpdateRequest;
 use Illuminate\Http\Request;
 
-class PeriodeController extends Controller
+class MinatController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +27,7 @@ class PeriodeController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(PeriodeStoreRequest $request)
+    public function store(MinatStoreRequest $request)
     {
         //
     }
@@ -51,7 +51,7 @@ class PeriodeController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(PeriodeUpdateRequest $request, string $id)
+    public function update(MinatUpdateRequest $request, string $id)
     {
         //
     }

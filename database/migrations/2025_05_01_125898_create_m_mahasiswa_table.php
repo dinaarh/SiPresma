@@ -12,15 +12,15 @@ class CreateMMahasiswaTable extends Migration
     public function up(): void
     {
         Schema::create('m_mahasiswa', function (Blueprint $table) {
-            $table->string('nim')->primary();
+            $table->string('nim', 10)->primary();
             $table->string('nama');
             $table->string('lokasi_preferensi');
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('prodi_id');
+            $table->unsignedBigInteger('program_studi_id');
             $table->timestamps();
 
-            $table->foreign('user_id')->references('user_id')->on('m_users');
-            $table->foreign('prodi_id')->references('prodi_id')->on('m_program_studi');
+            $table->foreign('user_id')->references('user_id')->on('m_user');
+            $table->foreign('program_studi_id')->references('program_studi_id')->on('m_program_studi');
         });
     }
 

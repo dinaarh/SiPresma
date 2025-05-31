@@ -9,10 +9,9 @@ class ProgramStudiModel extends Model
 {
     use HasFactory;
     protected $table = 'm_program_studi';
-    protected $primaryKey = 'prodi_id';
+    protected $primaryKey = 'program_studi_id';
 
     protected $fillable = [
-        'prodi_id',
-        'prodi_nama'
+        'program_studi_nama'
     ];
 }

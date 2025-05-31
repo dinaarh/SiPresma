@@ -18,13 +18,8 @@ class MahasiswaModel extends Model
         'user_id',
         'nim',
         'nama',
-        'bidang_keahlian',
-        'kompetensi',
-        'minat',
         'lokasi_preferensi',
-        'foto_profil_url',
-        'prodi_id',
-        'periode_id'
+        'program_studi_id'
     ];
 
     public function user()
