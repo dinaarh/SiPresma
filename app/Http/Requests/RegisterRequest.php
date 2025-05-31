@@ -31,6 +31,10 @@ class RegisterRequest extends FormRequest
             'password' => ['required', 'string', 'min:8', 'max:50'],
             'program_studi' => ['required', 'integer', Rule::exists('m_program_studi', 'program_studi_id')],
             'lokasi_preferensi' => ['required', 'string'],
+            'minat' => ['required', 'array'],
+            'minat.*' => ['required', 'integer', Rule::exists('m_minat', 'minat_id')],
+            'bidang_keahlian' => ['required', 'array'],
+            'bidang_keahlian.*' => ['required', 'integer', Rule::exists('m_bidang_keahlian', 'bidang_keahlian_id')],
         ];
     }
 

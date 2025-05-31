@@ -36,4 +36,14 @@ class MahasiswaModel extends Model
     {
         return $this->belongsTo(PeriodeModel::class, 'periode_id', 'periode_id');
     }
+
+    public function minats()
+    {
+        return $this->belongsToMany(MinatMahasiswaModel::class, 't_minat_mahasiswa', 'nim', 'minat_id')->withTimestamps();
+    }
+
+    public function bidang_keahlians()
+    {
+        return $this->belongsToMany(KeahlianMahasiswaModel::class, 't_keahlian_mahasiswa', 'nim', 'bidang_keahlian_id')->withTimestamps();
+    }
 }

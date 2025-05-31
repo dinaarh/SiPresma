@@ -12,3 +12,8 @@ html {
     font-size: var(--text-xs);
     margin-top: 0.25rem;
 }
+
+.invalid-feedback {
+    visibility: visible !important;
+    opacity: 1 !important;
+}

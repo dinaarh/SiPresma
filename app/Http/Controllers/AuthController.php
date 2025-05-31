@@ -5,8 +5,11 @@ namespace App\Http\Controllers;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
 use App\Models\AdminModel;
+use App\Models\BidangKeahlianModel;
 use App\Models\DosenPembimbingModel;
+use App\Models\KompetensiModel;
 use App\Models\MahasiswaModel;
+use App\Models\MinatModel;
 use App\Models\ProgramStudiModel;
 use App\Models\UserModel;
 use DB;
@@ -95,6 +98,8 @@ class AuthController extends Controller
     {
         return view('auth.register', [
             'program_studis' => ProgramStudiModel::all(),
+            'bidang_keahlians' => BidangKeahlianModel::all(),
+            'minats' => MinatModel::all(),
             'lokasi_preferensis' => [
                 'Kota',
                 'Provinsi',
@@ -128,6 +133,9 @@ class AuthController extends Controller
             ];
 
             $mahasiswa = MahasiswaModel::create($mahasiswaData);
+
+            $mahasiswa->minats()->attach($validated['minat']);
+            $mahasiswa->bidang_keahlians()->attach($validated['bidang_keahlian']);
 
             if ($user && $mahasiswa) {
                 DB::commit();

@@ -2,29 +2,100 @@
 
 @section('content')
     <div class="min-h-screen min-w-screen bg-primary">
-        <a href="{{ route('home') }}" class="absolute bg-white/80 backdrop-blur-md text-sm rounded-lg px-3 py-1 m-3"><i
+        <a href="{{ route('home') }}" class="absolute bg-white text-sm rounded-lg px-3 py-1.5 m-3"><i
                 class="fa-solid fa-arrow-left-long"></i> Kembali</a>
-        <section class="h-screen w-full flex items-center justify-center">
-            <div class="bg-white/80 backdrop-blur-md rounded-lg shadow-lg p-6 w-full max-w-lg">
-                <h1 class="text-black text-lg font-semibold">Selamat datang di {{ config('app.name') }}</h1>
+        <section class="h-screen w-full flex flex-col items-center justify-center">
+            <div class="flex items-center justify-center w-full max-w-sm mb-8">
+                <ol class="flex items-center w-full">
+                    <li
+                        class="flex w-full items-center text-blue-600 after:content-[''] after:w-full after:h-1 after:border-b after:border-blue-100 after:border-4 after:inline-block">
+                        <span
+                            class="flex items-center justify-center w-8 h-8 bg-blue-600 text-white rounded-full shrink-0 text-sm font-semibold">
+                            1
+                        </span>
+                    </li>
+                    <li class="flex items-center">
+                        <span
+                            class="flex items-center justify-center w-8 h-8 bg-gray-100 rounded-full shrink-0 text-sm font-semibold">
+                            2
+                        </span>
+                    </li>
+                </ol>
+            </div>
+            <div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-xl">
+                <h1 class="text-gray-900 text-lg font-semibold">Selamat datang di {{ config('app.name') }}</h1>
                 <p class="text-gray-500 text-xs">Silakan daftar untuk melanjutkan!</p>
                 <hr class="text-gray-300 my-4">
                 <form id="form" action="{{ route('register') }}" method="POST">
                     @csrf
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-2 mb-6">
-                        <x-forms.default-input id="nim" label="NIM" placeholder="Masukkan NIM" isRequired />
-                        <x-forms.default-input id="nama" label="Nama Lengkap" placeholder="Masukkan Nama Lengkap"
-                            isRequired />
-                        <x-forms.default-input type="email" id="email" label="Email"
-                            placeholder="Masukkan Nama Lengkap" isRequired />
-                        <x-forms.default-input type="password" id="password" label="Password"
-                            placeholder="Masukkan Password" isRequired />
-                        <x-forms.select-input id="program_studi" label="Program Studi" :data="$program_studis" isRequired />
-                        <x-forms.select-input id="lokasi_preferensi" label="Lokasi Preferensi" :data="$lokasi_preferensis"
-                            isRequired />
+                    <div id="step-1" class="">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-2 mb-6">
+                            <x-forms.default-input id="nim" label="NIM" placeholder="Masukkan NIM" isRequired />
+                            <x-forms.default-input id="nama" label="Nama Lengkap" placeholder="Masukkan Nama Lengkap"
+                                isRequired />
+                            <x-forms.default-input type="email" id="email" label="Email" placeholder="Masukkan Email"
+                                isRequired />
+                            <x-forms.default-input type="password" id="password" label="Password"
+                                placeholder="Masukkan Password" isRequired />
+                            <x-forms.select-input id="program_studi" label="Program Studi" :data="$program_studis" isRequired />
+                            <x-forms.select-input id="lokasi_preferensi" label="Lokasi Preferensi" :data="$lokasi_preferensis"
+                                isRequired />
+                        </div>
+                        <x-buttons.default id="next-step" type="button" title="Selanjutnya" color="primary"
+                            icon="fa-solid fa-arrow-right" class="w-full" />
                     </div>
-                    <x-buttons.default type="submit" title="Register" color="primary"
-                        icon="fa-solid fa-arrow-right-to-bracket" class="w-full" />
+                    <div id="step-2" class="space-y-4 hidden">
+                        <div class="form-group">
+                            <h2 class="text-md text-gray-800 font-semibold">Pilih Minat Anda</h2>
+                            <p class="text-gray-500 text-xs mb-2">Silahkan memilih skill yang ingin anda asah!</p>
+                            <div class="flex flex-wrap gap-2 border border-gray-300 rounded-lg p-3">
+                                @foreach ($minats as $minat)
+                                    <label class="cursor-pointer">
+                                        <input type="checkbox" class="sr-only peer" name="minat[]"
+                                            value="{{ $minat->minat_id }}" />
+                                        <span
+                                            class="inline-block px-3 py-1 text-xs font-semibold border-2 border-gray-400 text-gray-600 rounded-full transition-all duration-200
+                    peer-checked:bg-blue-500 peer-checked:text-white peer-checked:border-blue-500
+                    hover:bg-blue-50 peer-checked:hover:bg-blue-600">
+                                            {{ $minat->minat_nama }}
+                                        </span>
+                                    </label>
+                                @endforeach
+                            </div>
+                            <span id="error-minat" class="text-red-500 text-xs"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <h2 class="text-md text-gray-800 font-semibold">Pilih Bidang Keahlian Anda</h2>
+                            <p class="text-gray-500 text-xs mb-2">Silahkan memilih skill yang anda miliki saat ini!</p>
+                            <div class="flex flex-wrap gap-2 border border-gray-300 rounded-lg p-3">
+                                @foreach ($bidang_keahlians as $bidang_keahlian)
+                                    <label class="cursor-pointer">
+                                        <input type="checkbox" class="sr-only peer" name="bidang_keahlian[]"
+                                            value="{{ $bidang_keahlian->bidang_keahlian_id }}" />
+                                        <span
+                                            class="inline-block px-3 py-1 text-xs font-semibold border-2 border-gray-400 text-gray-600 rounded-full transition-all duration-200
+                    peer-checked:bg-blue-500 peer-checked:text-white peer-checked:border-blue-500
+                    hover:bg-blue-50 peer-checked:hover:bg-blue-600">
+                                            {{ $bidang_keahlian->bidang_keahlian_nama }}
+                                        </span>
+                                    </label>
+                                @endforeach
+                            </div>
+                            <span id="error-bidang_keahlian" class="text-red-500 text-xs"></span>
+                        </div>
+
+                        <div class="flex items-center justify-between">
+                            <x-buttons.default id="prev-step" type="button" title="Kembali" color="primary"
+                                icon="fa-solid fa-arrow-left" />
+                            <div class="space-x-2">
+                                <x-buttons.default id="reset-form" type="button" title="Reset" color="primary"
+                                    icon="fa-solid fa-arrow-rotate-right" />
+                                <x-buttons.default type="submit" title="Register" color="primary"
+                                    icon="fa-solid fa-arrow-right-to-bracket" />
+                            </div>
+                        </div>
+                    </div>
                 </form>
                 <hr class="text-gray-300 my-4">
                 <div class="text-center">
@@ -41,7 +112,42 @@
 @push('js')
     <script>
         $(document).ready(function() {
-            $("#form").validate({
+            let currentStep = 1;
+            const totalSteps = 2;
+
+            function updateStepperUI() {
+                const stepIndicators = $('ol li');
+
+                stepIndicators.each(function(index) {
+                    const stepNumber = index + 1;
+                    const $this = $(this);
+                    const $span = $this.find('span');
+
+                    if (stepNumber < currentStep) {
+                        // Completed step
+                        $this.removeClass('text-gray-500').addClass('text-blue-600');
+                        $span.removeClass('bg-gray-100').addClass('bg-blue-600 text-white');
+                    } else if (stepNumber === currentStep) {
+                        // Current step
+                        $this.removeClass('text-gray-500').addClass('text-blue-600');
+                        $span.removeClass('bg-gray-100').addClass('bg-blue-600 text-white');
+                    } else {
+                        // Future step
+                        $this.removeClass('text-blue-600').addClass('text-gray-500');
+                        $span.removeClass('bg-blue-600 text-white').addClass('bg-gray-100');
+                    }
+                });
+            }
+
+            function showStep(step) {
+                $('#step-1, #step-2').addClass('hidden');
+                $('#step-' + step).removeClass('hidden');
+                currentStep = step;
+                updateStepperUI();
+            }
+
+            // Initialize jQuery Validator
+            const validator = $("#form").validate({
                 rules: {
                     nim: {
                         required: true,
@@ -66,6 +172,12 @@
                         required: true,
                         minlength: 8,
                         maxlength: 50
+                    },
+                    "minat[]": {
+                        required: true
+                    },
+                    "bidang_keahlian[]": {
+                        required: true
                     }
                 },
                 messages: {
@@ -92,6 +204,12 @@
                         required: "Password wajib diisi.",
                         minlength: "Password minimal 8 karakter.",
                         maxlength: "Password maksimal 50 karakter."
+                    },
+                    "minat[]": {
+                        required: "Pilih minimal satu minat."
+                    },
+                    "bidang_keahlian[]": {
+                        required: "Pilih minimal satu bidang keahlian."
                     }
                 },
                 submitHandler: function(form) {
@@ -144,6 +262,42 @@
                     $(element).removeClass('is-invalid');
                 }
             });
+
+            // Validate only step 1 fields
+            function validateStep1() {
+                const step1Fields = ['#nim', '#nama', '#email', '#password', '#program_studi',
+                    '#lokasi_preferensi'
+                ];
+                let isValid = true;
+
+                step1Fields.forEach(field => {
+                    if (!validator.element(field)) {
+                        isValid = false;
+                    }
+                });
+
+                return isValid;
+            }
+
+            $('#next-step').on('click', function(e) {
+                e.preventDefault();
+
+                if (currentStep === 1) {
+                    if (validateStep1()) {
+                        showStep(currentStep + 1);
+                    }
+                }
+            });
+
+            $('#prev-step').on('click', function(e) {
+                e.preventDefault();
+
+                if (currentStep > 1) {
+                    showStep(currentStep - 1);
+                }
+            });
+
+            updateStepperUI();
 
             $('#form input').on('input', function() {
                 const fieldId = $(this).attr('id');
