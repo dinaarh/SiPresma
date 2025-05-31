@@ -17,7 +17,7 @@ class CreateMDosenPembimbingTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
 
-            $table->foreign('user_id')->references('user_id')->on('m_users');
+            $table->foreign('user_id')->references('user_id')->on('m_user');
         });
     }
 

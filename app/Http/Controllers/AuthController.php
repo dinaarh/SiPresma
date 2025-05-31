@@ -3,12 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\LoginRequest;
+use App\Http\Requests\RegisterRequest;
 use App\Models\AdminModel;
 use App\Models\DosenPembimbingModel;
 use App\Models\MahasiswaModel;
+use App\Models\ProgramStudiModel;
+use App\Models\UserModel;
+use DB;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
@@ -88,7 +93,64 @@ class AuthController extends Controller
 
     public function showRegisterForm()
     {
-        return view('auth.register');
+        return view('auth.register', [
+            'program_studis' => ProgramStudiModel::all(),
+            'lokasi_preferensis' => [
+                'Kota',
+                'Provinsi',
+                'Nasional',
+                'Internasional',
+            ],
+        ]);
+    }
+
+    public function register(RegisterRequest $request)
+    {
+        try {
+            DB::beginTransaction();
+            $validated = $request->validated();
+            $userData = [
+                'email' => $validated['email'],
+                'password' => Hash::make($validated['password']),
+                'role' => 'mahasiswa',
+                'status_akun' => 'aktif',
+                'last_login_at' => now(),
+            ];
+
+            $user = UserModel::create($userData);
+
+            $mahasiswaData = [
+                'nim' => $validated['nim'],
+                'nama' => $validated['nama'],
+                'program_studi_id' => $validated['program_studi'],
+                'lokasi_preferensi' => $validated['lokasi_preferensi'],
+                'user_id' => $user->user_id,
+            ];
+
+            $mahasiswa = MahasiswaModel::create($mahasiswaData);
+
+            if ($user && $mahasiswa) {
+                DB::commit();
+                Auth::login($user);
+                return response()->json([
+                    'status' => true,
+                    'message' => 'Registrasi berhasil!',
+                    'redirect' => route('mahasiswa.dashboard'),
+                ]);
+            } else {
+                DB::rollBack();
+                return response()->json([
+                    'status' => false,
+                    'message' => 'Registrasi gagal!',
+                ]);
+            }
+        } catch (Exception $e) {
+            DB::rollBack();
+            return response()->json([
+                'status' => false,
+                'message' => 'Registrasi gagal!, ' . $e->getMessage(),
+            ]);
+        }
     }
 
     public function logout(Request $request)

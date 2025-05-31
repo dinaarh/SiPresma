@@ -9,8 +9,8 @@ class CreateMProgramStudiTable extends Migration
     public function up()
     {
         Schema::create('m_program_studi', function (Blueprint $table) {
-            $table->id('prodi_id');
-            $table->string('prodi_nama');
+            $table->id('program_studi_id');
+            $table->string('program_studi_nama');
             $table->timestamps();
         });
     }

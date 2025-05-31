@@ -20,8 +20,6 @@
         <!-- Header -->
         @include('layouts.header') 
 
-        <x-offline-course/>
-
         <!-- input form mahasiswa -->
         <x-inputDataMahasiswa />
     </div>

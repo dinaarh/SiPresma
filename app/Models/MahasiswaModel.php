@@ -19,7 +19,7 @@ class MahasiswaModel extends Model
         'nim',
         'nama',
         'lokasi_preferensi',
-        'prodi_id'
+        'program_studi_id'
     ];
 
     public function user()

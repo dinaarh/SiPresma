@@ -9,7 +9,7 @@ use Illuminate\Notifications\Notifiable;
 class UserModel extends Authenticatable
 {
     use HasFactory, Notifiable;
-    protected $table = 'm_users';
+    protected $table = 'm_user';
     protected $primaryKey = 'user_id';
 
     protected $fillable = [
