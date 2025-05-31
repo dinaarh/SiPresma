@@ -46,7 +46,7 @@
                     nim: {
                         required: true,
                         minlength: 10,
-                        maxlength: 18
+                        maxlength: 10
                     },
                     nama: {
                         required: true,
@@ -72,7 +72,7 @@
                     nim: {
                         required: "NIM wajib diisi.",
                         minlength: "NIM minimal 10 karakter.",
-                        maxlength: "NIM maksimal 18 karakter."
+                        maxlength: "NIM maksimal 10 karakter."
                     },
                     nama: {
                         required: "Nama lengkap wajib diisi.",
@@ -109,9 +109,18 @@
                                     window.location = response.redirect;
                                 });
                             } else {
-                                $('.error-text').text('');
+                                $('.error-text, .invalid-feedback').text('');
+                                $('.is-invalid').removeClass('is-invalid');
                                 $.each(response.msgField, function(prefix, val) {
                                     $('#error-' + prefix).text(val[0]);
+
+                                    const $field = $('#' + prefix);
+                                    if ($field.length) {
+                                        $field.addClass('is-invalid');
+                                    } else {
+                                        $('[name="' + prefix + '"]').addClass(
+                                            'is-invalid');
+                                    }
                                 });
                                 Swal.fire({
                                     icon: 'error',

@@ -25,7 +25,7 @@ class RegisterRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nim' => ['required', 'string', 'max:10', Rule::unique('m_mahasiswa', 'nim')],
+            'nim' => ['required', 'string', 'min:10', 'max:10', Rule::unique('m_mahasiswa', 'nim')],
             'nama' => ['required', 'string'],
             'email' => ['required', 'string', 'email', 'max:255', Rule::unique('m_user', 'email')],
             'password' => ['required', 'string', 'min:8', 'max:50'],
@@ -38,6 +38,7 @@ class RegisterRequest extends FormRequest
     {
         return [
             'nim.required' => 'NIM wajib diisi.',
+            'nim.min' => 'NIM minimal 10 karakter.',
             'nim.max' => 'NIM tidak boleh lebih dari 10 karakter.',
             'nim.unique' => 'NIM sudah terdaftar.',
             'nama.required' => 'Nama wajib diisi.',

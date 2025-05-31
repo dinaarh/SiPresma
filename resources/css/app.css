@@ -3,23 +3,6 @@
 @plugin "flowbite/plugin";
 @source "../../node_modules/flowbite";
 
-html {
-    font-family: "Inter", arial;
-}
-
-.is-invalid {
-    @apply border-red-500;
-}
-
-.is-invalid:focus {
-    @apply border-red-500;
-    @apply ring-red-200;
-}
-
-.error-text {
-    @apply text-red-500 text-xs mt-1;
-}
-
 @theme {
     --color-primary: #3b82f6;
     --color-primary-focus: #2563eb;
