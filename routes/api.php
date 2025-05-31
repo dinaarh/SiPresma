@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\MahasiswaController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -24,3 +25,9 @@ Route::get('/mahasiswa', [MahasiswaController::class, 'index']);
 Route::get('/mahasiswa/{nim}', [MahasiswaController::class, 'show']);
 Route::put('/mahasiswa/{nim}', [MahasiswaController::class, 'update']);
 Route::delete('/mahasiswa/{nim}', [MahasiswaController::class, 'destroy']);
+
+Route::post('/admin', [AdminController::class, 'store']);
+Route::get('/admin', [AdminController::class, 'index']);
+Route::get('/admin/{nip}', [AdminController::class, 'show']);
+Route::put('/admin/{nip}', [AdminController::class, 'update']);
+Route::delete('/admin/{nip}', [AdminController::class, 'destroy']);
